@@ -29,23 +29,26 @@ class _DicePageState extends State<DicePage> {
     int leftDiceCount = 1;
     int rightDiceCount = 1;
 
+    void pressedHandler() {
+      setState(() {
+        leftDiceCount = Random().nextInt(6) + 1;
+        rightDiceCount = Random().nextInt(6) + 1;
+      });
+    }
+
     return Center(
       child: Row(
         children: <Widget>[
           Expanded(
               child: TextButton(
                   onPressed: () {
-                    setState(() {
-                      leftDiceCount = Random().nextInt(6) + 1;
-                    });
+                    pressedHandler();
                   },
                   child: Image.asset("images/dice$leftDiceCount.png"))),
           Expanded(
               child: TextButton(
                   onPressed: () {
-                    setState(() {
-                      rightDiceCount = Random().nextInt(6) + 1;
-                    });
+                    pressedHandler();
                   },
                   child: Image.asset("images/dice$rightDiceCount.png")))
         ],
